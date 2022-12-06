@@ -6,10 +6,6 @@ authors = ["Rob Grant <rob.grant@sensynehealth.com>"]
 keywords = ["Swagger", "Services", "Patients", "Locations", "Users", "Clinicians"]
 repository = "https://github.com/draysontechnologies/dhos-services-api"
 
-[[tool.poetry.source]]
-name = "sensynehealth"
-url = "https://pypi.fury.io/sensynehealth/"
-
 [tool.poetry.dependencies]
 python = "^3.9,<3.10"
 auth0-api-client = "1.*"

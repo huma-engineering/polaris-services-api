@@ -36,11 +36,11 @@ python-versions = ">=3.7"
 PyYAML = {version = ">=3.10", optional = true, markers = "extra == \"yaml\""}
 
 [package.extras]
-dev = ["PyYAML (>=3.10)", "prance[osv] (>=0.11)", "marshmallow (>=3.13.0)", "pytest", "mock", "flake8 (==4.0.1)", "flake8-bugbear (==22.4.25)", "pre-commit (>=2.4,<3.0)", "mypy (==0.950)", "types-pyyaml", "tox"]
+dev = ["PyYAML (>=3.10)", "flake8 (==4.0.1)", "flake8-bugbear (==22.4.25)", "marshmallow (>=3.13.0)", "mock", "mypy (==0.950)", "prance[osv] (>=0.11)", "pre-commit (>=2.4,<3.0)", "pytest", "tox", "types-PyYAML"]
 docs = ["marshmallow (>=3.13.0)", "pyyaml (==6.0)", "sphinx (==4.5.0)", "sphinx-issues (==3.0.1)", "sphinx-rtd-theme (==1.0.0)"]
-lint = ["flake8 (==4.0.1)", "flake8-bugbear (==22.4.25)", "pre-commit (>=2.4,<3.0)", "mypy (==0.950)", "types-pyyaml"]
+lint = ["flake8 (==4.0.1)", "flake8-bugbear (==22.4.25)", "mypy (==0.950)", "pre-commit (>=2.4,<3.0)", "types-PyYAML"]
 marshmallow = ["marshmallow (>=3.13.0)"]
-tests = ["PyYAML (>=3.10)", "prance[osv] (>=0.11)", "marshmallow (>=3.13.0)", "pytest", "mock"]
+tests = ["PyYAML (>=3.10)", "marshmallow (>=3.13.0)", "mock", "prance[osv] (>=0.11)", "pytest"]
 validation = ["prance[osv] (>=0.11)"]
 yaml = ["PyYAML (>=3.10)"]
 
@@ -56,9 +56,9 @@ python-versions = ">=3.6"
 apispec = {version = ">=2.0.0", extras = ["yaml"]}
 
 [package.extras]
-dev = ["pytest", "mock", "Flask (==1.1.1)", "tornado", "bottle (==0.12.17)", "flake8 (==3.7.9)", "flake8-bugbear (==19.8.0)", "pre-commit (>=1.18,<2.0)", "tox"]
+dev = ["Flask (==1.1.1)", "bottle (==0.12.17)", "flake8 (==3.7.9)", "flake8-bugbear (==19.8.0)", "mock", "pre-commit (>=1.18,<2.0)", "pytest", "tornado", "tox"]
 lint = ["flake8 (==3.7.9)", "flake8-bugbear (==19.8.0)", "pre-commit (>=1.18,<2.0)"]
-tests = ["pytest", "mock", "Flask (==1.1.1)", "tornado", "bottle (==0.12.17)"]
+tests = ["Flask (==1.1.1)", "bottle (==0.12.17)", "mock", "pytest", "tornado"]
 
 [[package]]
 name = "atomicwrites"
@@ -77,14 +77,14 @@ optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 
 [package.extras]
-dev = ["coverage[toml] (>=5.0.2)", "hypothesis", "pympler", "pytest (>=4.3.0)", "six", "mypy", "pytest-mypy-plugins", "zope.interface", "furo", "sphinx", "sphinx-notfound-page", "pre-commit", "cloudpickle"]
-docs = ["furo", "sphinx", "zope.interface", "sphinx-notfound-page"]
-tests = ["coverage[toml] (>=5.0.2)", "hypothesis", "pympler", "pytest (>=4.3.0)", "six", "mypy", "pytest-mypy-plugins", "zope.interface", "cloudpickle"]
-tests_no_zope = ["coverage[toml] (>=5.0.2)", "hypothesis", "pympler", "pytest (>=4.3.0)", "six", "mypy", "pytest-mypy-plugins", "cloudpickle"]
+dev = ["cloudpickle", "coverage[toml] (>=5.0.2)", "furo", "hypothesis", "mypy", "pre-commit", "pympler", "pytest (>=4.3.0)", "pytest-mypy-plugins", "six", "sphinx", "sphinx-notfound-page", "zope.interface"]
+docs = ["furo", "sphinx", "sphinx-notfound-page", "zope.interface"]
+tests = ["cloudpickle", "coverage[toml] (>=5.0.2)", "hypothesis", "mypy", "pympler", "pytest (>=4.3.0)", "pytest-mypy-plugins", "six", "zope.interface"]
+tests-no-zope = ["cloudpickle", "coverage[toml] (>=5.0.2)", "hypothesis", "mypy", "pympler", "pytest (>=4.3.0)", "pytest-mypy-plugins", "six"]
 
 [[package]]
 name = "auth0-api-client"
-version = "1.3.5"
+version = "1.3.6"
 description = "Client library for Auth0 management API"
 category = "main"
 optional = false
@@ -94,11 +94,6 @@ python-versions = ">=3.8,<4.0"
 environs = ">=9.0.0,<10.0.0"
 requests = ">=2.0.0,<3.0.0"
 she-logging = ">=1.0.0,<2.0.0"
-
-[package.source]
-type = "legacy"
-url = "https://pypi.fury.io/sensynehealth"
-reference = "sensynehealth"
 
 [[package]]
 name = "bandit"
@@ -115,9 +110,9 @@ PyYAML = ">=5.3.1"
 stevedore = ">=1.20.0"
 
 [package.extras]
-test = ["coverage (>=4.5.4)", "fixtures (>=3.0.0)", "flake8 (>=4.0.0)", "stestr (>=2.5.0)", "testscenarios (>=0.5.0)", "testtools (>=2.3.0)", "toml", "beautifulsoup4 (>=4.8.0)", "pylint (==1.9.4)"]
+test = ["beautifulsoup4 (>=4.8.0)", "coverage (>=4.5.4)", "fixtures (>=3.0.0)", "flake8 (>=4.0.0)", "pylint (==1.9.4)", "stestr (>=2.5.0)", "testscenarios (>=0.5.0)", "testtools (>=2.3.0)", "toml"]
 toml = ["toml"]
-yaml = ["pyyaml"]
+yaml = ["PyYAML"]
 
 [[package]]
 name = "black"
@@ -158,7 +153,7 @@ optional = false
 python-versions = ">=3.5.0"
 
 [package.extras]
-unicode_backport = ["unicodedata2"]
+unicode-backport = ["unicodedata2"]
 
 [[package]]
 name = "click"
@@ -226,11 +221,11 @@ swagger-ui-bundle = {version = ">=0.0.2,<0.1", optional = true, markers = "extra
 werkzeug = ">=1.0,<3"
 
 [package.extras]
-aiohttp = ["aiohttp (>=2.3.10,<4)", "aiohttp-jinja2 (>=0.14.0,<2)", "MarkupSafe (>=0.23)"]
+aiohttp = ["MarkupSafe (>=0.23)", "aiohttp (>=2.3.10,<4)", "aiohttp-jinja2 (>=0.14.0,<2)"]
 docs = ["sphinx-autoapi (==1.8.1)"]
 flask = ["flask (>=1.0.4,<3)", "itsdangerous (>=0.24)"]
 swagger-ui = ["swagger-ui-bundle (>=0.0.2,<0.1)"]
-tests = ["decorator (>=5,<6)", "pytest (>=6,<7)", "pytest-cov (>=2,<3)", "testfixtures (>=6,<7)", "flask (>=1.0.4,<3)", "itsdangerous (>=0.24)", "swagger-ui-bundle (>=0.0.2,<0.1)", "aiohttp (>=2.3.10,<4)", "aiohttp-jinja2 (>=0.14.0,<2)", "MarkupSafe (>=0.23)", "pytest-aiohttp", "aiohttp-remotes"]
+tests = ["MarkupSafe (>=0.23)", "aiohttp (>=2.3.10,<4)", "aiohttp-jinja2 (>=0.14.0,<2)", "aiohttp-remotes", "decorator (>=5,<6)", "flask (>=1.0.4,<3)", "itsdangerous (>=0.24)", "pytest (>=6,<7)", "pytest-aiohttp", "pytest-cov (>=2,<3)", "swagger-ui-bundle (>=0.0.2,<0.1)", "testfixtures (>=6,<7)"]
 
 [[package]]
 name = "coverage"
@@ -253,8 +248,8 @@ python-versions = ">=3.5"
 
 [[package]]
 name = "dhos-redis"
-version = "1.0.0"
-description = "Redis functionality for DHOS"
+version = "1.0.2"
+description = "Redis functionality for Polaris"
 category = "main"
 optional = false
 python-versions = ">=3.8,<4.0"
@@ -263,11 +258,6 @@ python-versions = ">=3.8,<4.0"
 environs = ">=9.0.0,<10.0.0"
 redis = ">=3.0.0,<4.0.0"
 she-logging = ">=1.0.0,<2.0.0"
-
-[package.source]
-type = "legacy"
-url = "https://pypi.fury.io/sensynehealth"
-reference = "sensynehealth"
 
 [[package]]
 name = "distlib"
@@ -292,11 +282,11 @@ websocket-client = ">=0.32.0"
 
 [package.extras]
 ssh = ["paramiko (>=2.4.2)"]
-tls = ["pyOpenSSL (>=17.5.0)", "cryptography (>=3.4.7)", "idna (>=2.0.0)"]
+tls = ["cryptography (>=3.4.7)", "idna (>=2.0.0)", "pyOpenSSL (>=17.5.0)"]
 
 [[package]]
 name = "dparse"
-version = "0.5.1"
+version = "0.6.2"
 description = "A parser for Python dependency files"
 category = "dev"
 optional = false
@@ -304,24 +294,19 @@ python-versions = ">=3.5"
 
 [package.dependencies]
 packaging = "*"
-pyyaml = "*"
 toml = "*"
 
 [package.extras]
+conda = ["pyyaml"]
 pipenv = ["pipenv"]
 
 [[package]]
 name = "draymed"
-version = "2.1.5"
+version = "2.1.9"
 description = "Draymed library for SNOMED codes and more"
 category = "main"
 optional = false
-python-versions = ">=3.7,<4.0"
-
-[package.source]
-type = "legacy"
-url = "https://pypi.fury.io/sensynehealth"
-reference = "sensynehealth"
+python-versions = ">=3.9,<4.0"
 
 [[package]]
 name = "ecdsa"
@@ -351,10 +336,10 @@ marshmallow = ">=3.0.0"
 python-dotenv = "*"
 
 [package.extras]
-dev = ["pytest", "dj-database-url", "dj-email-url", "django-cache-url", "flake8 (==4.0.1)", "flake8-bugbear (==21.9.2)", "mypy (==0.910)", "pre-commit (>=2.4,<3.0)", "tox"]
+dev = ["dj-database-url", "dj-email-url", "django-cache-url", "flake8 (==4.0.1)", "flake8-bugbear (==21.9.2)", "mypy (==0.910)", "pre-commit (>=2.4,<3.0)", "pytest", "tox"]
 django = ["dj-database-url", "dj-email-url", "django-cache-url"]
 lint = ["flake8 (==4.0.1)", "flake8-bugbear (==21.9.2)", "mypy (==0.910)", "pre-commit (>=2.4,<3.0)"]
-tests = ["pytest", "dj-database-url", "dj-email-url", "django-cache-url"]
+tests = ["dj-database-url", "dj-email-url", "django-cache-url", "pytest"]
 
 [[package]]
 name = "faker"
@@ -400,8 +385,8 @@ dotenv = ["python-dotenv"]
 
 [[package]]
 name = "flask-batteries-included"
-version = "3.1.1"
-description = "Sensyne Health : Flask Batteries Included"
+version = "3.1.2"
+description = "Batteries-included library for Polaris microservices using Flask"
 category = "main"
 optional = false
 python-versions = ">=3.8,<4.0"
@@ -426,13 +411,8 @@ she-logging = ">=1.0.0,<2.0.0"
 waitress = ">=2.0.0,<3.0.0"
 
 [package.extras]
-pgsql = ["Flask-Migrate (>=3.0.0,<4.0.0)", "Flask-SQLAlchemy (>=2.0.0,<3.0.0)", "psycopg2-binary (>=2.0.0,<3.0.0)"]
 apispec = ["apispec-webframeworks (<1.0.0)", "connexion[swagger-ui] (>=2.0.0,<3.0.0)"]
-
-[package.source]
-type = "legacy"
-url = "https://pypi.fury.io/sensynehealth"
-reference = "sensynehealth"
+pgsql = ["Flask-Migrate (>=3.0.0,<4.0.0)", "Flask-SQLAlchemy (>=2.0.0,<3.0.0)", "psycopg2-binary (>=2.0.0,<3.0.0)"]
 
 [[package]]
 name = "flask-log-request-id"
@@ -446,7 +426,7 @@ python-versions = "*"
 Flask = ">=0.8"
 
 [package.extras]
-test = ["nose", "flake8", "mock (==2.0.0)", "coverage (>=4.5.4,<4.6.0)", "celery (>=4.3.0,<4.4.0)"]
+test = ["celery (>=4.3.0,<4.4.0)", "coverage (>=4.5.4,<4.6.0)", "flake8", "mock (==2.0.0)", "nose"]
 
 [[package]]
 name = "flask-migrate"
@@ -515,7 +495,7 @@ optional = false
 python-versions = ">=2.7,!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*"
 
 [package.extras]
-docs = ["sphinx"]
+docs = ["Sphinx"]
 
 [[package]]
 name = "healthcheck"
@@ -556,9 +536,9 @@ python-versions = ">=3.7"
 zipp = ">=0.5"
 
 [package.extras]
-docs = ["sphinx", "jaraco.packaging (>=9)", "rst.linker (>=1.9)"]
+docs = ["jaraco.packaging (>=9)", "rst.linker (>=1.9)", "sphinx"]
 perf = ["ipython"]
-testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-cov", "pytest-enabler (>=1.0.1)", "packaging", "pyfakefs", "flufl.flake8", "pytest-perf (>=0.9.2)", "pytest-black (>=0.3.7)", "pytest-mypy (>=0.9.1)", "importlib-resources (>=1.3)"]
+testing = ["flufl.flake8", "importlib-resources (>=1.3)", "packaging", "pyfakefs", "pytest (>=6)", "pytest-black (>=0.3.7)", "pytest-checkdocs (>=2.4)", "pytest-cov", "pytest-enabler (>=1.0.1)", "pytest-flake8", "pytest-mypy (>=0.9.1)", "pytest-perf (>=0.9.2)"]
 
 [[package]]
 name = "inflection"
@@ -585,10 +565,10 @@ optional = false
 python-versions = ">=3.6.1,<4.0"
 
 [package.extras]
-pipfile_deprecated_finder = ["pipreqs", "requirementslib"]
-requirements_deprecated_finder = ["pipreqs", "pip-api"]
 colors = ["colorama (>=0.4.3,<0.5.0)"]
+pipfile-deprecated-finder = ["pipreqs", "requirementslib"]
 plugins = ["setuptools"]
+requirements-deprecated-finder = ["pip-api", "pipreqs"]
 
 [[package]]
 name = "itsdangerous"
@@ -644,11 +624,12 @@ python-versions = "*"
 [package.dependencies]
 attrs = ">=17.4.0"
 pyrsistent = ">=0.14.0"
+setuptools = "*"
 six = ">=1.11.0"
 
 [package.extras]
 format = ["idna", "jsonpointer (>1.13)", "rfc3987", "strict-rfc3339", "webcolors"]
-format_nongpl = ["idna", "jsonpointer (>1.13)", "webcolors", "rfc3986-validator (>0.1.0)", "rfc3339-validator"]
+format-nongpl = ["idna", "jsonpointer (>1.13)", "rfc3339-validator", "rfc3986-validator (>0.1.0)", "webcolors"]
 
 [[package]]
 name = "kombu"
@@ -680,21 +661,16 @@ zookeeper = ["kazoo (>=1.3.1)"]
 
 [[package]]
 name = "kombu-batteries-included"
-version = "1.1.3"
-description = "Sensyne Health : Kombu Batteries Included"
+version = "1.1.4"
+description = "Batteries-included library for Polaris services using Kombu"
 category = "main"
 optional = false
-python-versions = ">=3.8,<4.0"
+python-versions = ">=3.9,<4.0"
 
 [package.dependencies]
 environs = ">=9.0.0,<10.0.0"
 kombu = ">=5.0.0,<6.0.0"
 she-logging = ">=1.0.0,<2.0.0"
-
-[package.source]
-type = "legacy"
-url = "https://pypi.fury.io/sensynehealth"
-reference = "sensynehealth"
 
 [[package]]
 name = "lazy-import"
@@ -712,7 +688,7 @@ test = ["pytest", "pytest-xdist"]
 
 [[package]]
 name = "mako"
-version = "1.2.0"
+version = "1.2.4"
 description = "A super-fast templating language that borrows the best ideas from the existing templating languages."
 category = "main"
 optional = false
@@ -722,7 +698,7 @@ python-versions = ">=3.7"
 MarkupSafe = ">=0.9.2"
 
 [package.extras]
-babel = ["babel"]
+babel = ["Babel"]
 lingua = ["lingua"]
 testing = ["pytest"]
 
@@ -746,9 +722,9 @@ python-versions = ">=3.7"
 packaging = ">=17.0"
 
 [package.extras]
-dev = ["pytest", "pytz", "simplejson", "mypy (==0.960)", "flake8 (==4.0.1)", "flake8-bugbear (==22.4.25)", "pre-commit (>=2.4,<3.0)", "tox"]
-docs = ["sphinx (==4.5.0)", "sphinx-issues (==3.0.1)", "alabaster (==0.7.12)", "sphinx-version-warning (==1.1.2)", "autodocsumm (==0.2.8)"]
-lint = ["mypy (==0.960)", "flake8 (==4.0.1)", "flake8-bugbear (==22.4.25)", "pre-commit (>=2.4,<3.0)"]
+dev = ["flake8 (==4.0.1)", "flake8-bugbear (==22.4.25)", "mypy (==0.960)", "pre-commit (>=2.4,<3.0)", "pytest", "pytz", "simplejson", "tox"]
+docs = ["alabaster (==0.7.12)", "autodocsumm (==0.2.8)", "sphinx (==4.5.0)", "sphinx-issues (==3.0.1)", "sphinx-version-warning (==1.1.2)"]
+lint = ["flake8 (==4.0.1)", "flake8-bugbear (==22.4.25)", "mypy (==0.960)", "pre-commit (>=2.4,<3.0)"]
 tests = ["pytest", "pytz", "simplejson"]
 
 [[package]]
@@ -760,7 +736,7 @@ optional = false
 python-versions = ">=3.6"
 
 [package.extras]
-build = ["twine", "wheel", "blurb"]
+build = ["blurb", "twine", "wheel"]
 docs = ["sphinx"]
 test = ["pytest (<5.4)", "pytest-cov"]
 
@@ -870,8 +846,8 @@ optional = false
 python-versions = ">=3.7"
 
 [package.extras]
-docs = ["furo (>=2021.7.5b38)", "proselint (>=0.10.2)", "sphinx-autodoc-typehints (>=1.12)", "sphinx (>=4)"]
-test = ["appdirs (==1.4.4)", "pytest-cov (>=2.7)", "pytest-mock (>=3.6)", "pytest (>=6)"]
+docs = ["furo (>=2021.7.5b38)", "proselint (>=0.10.2)", "sphinx (>=4)", "sphinx-autodoc-typehints (>=1.12)"]
+test = ["appdirs (==1.4.4)", "pytest (>=6)", "pytest-cov (>=2.7)", "pytest-mock (>=3.6)"]
 
 [[package]]
 name = "pluggy"
@@ -960,7 +936,7 @@ optional = false
 python-versions = ">=3.6.8"
 
 [package.extras]
-diagrams = ["railroad-diagrams", "jinja2"]
+diagrams = ["jinja2", "railroad-diagrams"]
 
 [[package]]
 name = "pyreadline3"
@@ -1014,24 +990,19 @@ sqlalchemy = "*"
 
 [[package]]
 name = "pytest-dhos"
-version = "1.0.3"
+version = "1.0.5"
 description = "Common fixtures for pytest in DHOS services and libraries"
 category = "dev"
 optional = false
-python-versions = ">=3.7,<4.0"
+python-versions = ">=3.8,<4.0"
 
 [package.dependencies]
 flask_batteries_included = {version = "*", optional = true, markers = "extra == \"fbi\""}
 neomodel = {version = "*", optional = true, markers = "extra == \"neo\""}
 
 [package.extras]
-fbi = ["flask-batteries-included"]
+fbi = ["flask_batteries_included"]
 neo = ["neomodel"]
-
-[package.source]
-type = "legacy"
-url = "https://pypi.fury.io/sensynehealth"
-reference = "sensynehealth"
 
 [[package]]
 name = "pytest-flask"
@@ -1047,7 +1018,7 @@ pytest = ">=5.2"
 Werkzeug = ">=0.7"
 
 [package.extras]
-docs = ["sphinx", "sphinx-rtd-theme"]
+docs = ["Sphinx", "sphinx-rtd-theme"]
 
 [[package]]
 name = "pytest-freezegun"
@@ -1073,7 +1044,7 @@ python-versions = ">=3.7"
 pytest = ">=5.0"
 
 [package.extras]
-dev = ["pre-commit", "tox", "pytest-asyncio"]
+dev = ["pre-commit", "pytest-asyncio", "tox"]
 
 [[package]]
 name = "python-dateutil"
@@ -1112,8 +1083,8 @@ rsa = "*"
 
 [package.extras]
 cryptography = ["cryptography (>=3.4.0)"]
-pycrypto = ["pycrypto (>=2.6.0,<2.7.0)", "pyasn1"]
-pycryptodome = ["pycryptodome (>=3.3.1,<4.0.0)", "pyasn1"]
+pycrypto = ["pyasn1", "pycrypto (>=2.6.0,<2.7.0)"]
+pycryptodome = ["pyasn1", "pycryptodome (>=3.3.1,<4.0.0)"]
 
 [[package]]
 name = "pytz"
@@ -1166,7 +1137,7 @@ urllib3 = ">=1.21.1,<1.27"
 
 [package.extras]
 socks = ["PySocks (>=1.5.6,!=1.5.7)"]
-use_chardet_on_py3 = ["chardet (>=3.0.2,<5)"]
+use-chardet-on-py3 = ["chardet (>=3.0.2,<5)"]
 
 [[package]]
 name = "requests-mock"
@@ -1219,11 +1190,25 @@ Click = ">=6.0"
 dparse = ">=0.5.1"
 packaging = "*"
 requests = "*"
+setuptools = "*"
+
+[[package]]
+name = "setuptools"
+version = "65.6.3"
+description = "Easily download, build, install, upgrade, and uninstall Python packages"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.extras]
+docs = ["furo", "jaraco.packaging (>=9)", "jaraco.tidelift (>=1.4)", "pygments-github-lexers (==0.0.5)", "rst.linker (>=1.9)", "sphinx (>=3.5)", "sphinx-favicon", "sphinx-hoverxref (<2)", "sphinx-inline-tabs", "sphinx-notfound-page (==0.8.3)", "sphinx-reredirects", "sphinxcontrib-towncrier"]
+testing = ["build[virtualenv]", "filelock (>=3.4.0)", "flake8 (<5)", "flake8-2020", "ini2toml[lite] (>=0.9)", "jaraco.envs (>=2.2)", "jaraco.path (>=3.2.0)", "pip (>=19.1)", "pip-run (>=8.8)", "pytest (>=6)", "pytest-black (>=0.3.7)", "pytest-checkdocs (>=2.4)", "pytest-cov", "pytest-enabler (>=1.3)", "pytest-flake8", "pytest-mypy (>=0.9.1)", "pytest-perf", "pytest-timeout", "pytest-xdist", "tomli-w (>=1.0.0)", "virtualenv (>=13.0.0)", "wheel"]
+testing-integration = ["build[virtualenv]", "filelock (>=3.4.0)", "jaraco.envs (>=2.2)", "jaraco.path (>=3.2.0)", "pytest", "pytest-enabler", "pytest-xdist", "tomli", "virtualenv (>=13.0.0)", "wheel"]
 
 [[package]]
 name = "she-logging"
-version = "1.4.0"
-description = "Common logging configuration for Sensyne Health microservices"
+version = "1.4.1"
+description = "Common logging configuration for Polaris microservices"
 category = "main"
 optional = false
 python-versions = ">=3.6.9,<4.0"
@@ -1235,11 +1220,6 @@ PyYAML = ">=5.0.0,<6.0.0"
 
 [package.extras]
 colour = ["rich (>=10.0.0,<11.0.0)"]
-
-[package.source]
-type = "legacy"
-url = "https://pypi.fury.io/sensynehealth"
-reference = "sensynehealth"
 
 [[package]]
 name = "six"
@@ -1271,25 +1251,25 @@ mypy = {version = ">=0.910", optional = true, markers = "python_version >= \"3\"
 sqlalchemy2-stubs = {version = "*", optional = true, markers = "extra == \"mypy\""}
 
 [package.extras]
-aiomysql = ["greenlet (!=0.4.17)", "aiomysql"]
-aiosqlite = ["typing_extensions (!=3.10.0.1)", "greenlet (!=0.4.17)", "aiosqlite"]
+aiomysql = ["aiomysql", "greenlet (!=0.4.17)"]
+aiosqlite = ["aiosqlite", "greenlet (!=0.4.17)", "typing_extensions (!=3.10.0.1)"]
 asyncio = ["greenlet (!=0.4.17)"]
-asyncmy = ["greenlet (!=0.4.17)", "asyncmy (>=0.2.3,!=0.2.4)"]
-mariadb_connector = ["mariadb (>=1.0.1)"]
+asyncmy = ["asyncmy (>=0.2.3,!=0.2.4)", "greenlet (!=0.4.17)"]
+mariadb-connector = ["mariadb (>=1.0.1)"]
 mssql = ["pyodbc"]
-mssql_pymssql = ["pymssql"]
-mssql_pyodbc = ["pyodbc"]
-mypy = ["sqlalchemy2-stubs", "mypy (>=0.910)"]
-mysql = ["mysqlclient (>=1.4.0,<2)", "mysqlclient (>=1.4.0)"]
-mysql_connector = ["mysql-connector-python"]
-oracle = ["cx_oracle (>=7,<8)", "cx_oracle (>=7)"]
+mssql-pymssql = ["pymssql"]
+mssql-pyodbc = ["pyodbc"]
+mypy = ["mypy (>=0.910)", "sqlalchemy2-stubs"]
+mysql = ["mysqlclient (>=1.4.0)", "mysqlclient (>=1.4.0,<2)"]
+mysql-connector = ["mysql-connector-python"]
+oracle = ["cx_oracle (>=7)", "cx_oracle (>=7,<8)"]
 postgresql = ["psycopg2 (>=2.7)"]
-postgresql_asyncpg = ["greenlet (!=0.4.17)", "asyncpg"]
-postgresql_pg8000 = ["pg8000 (>=1.16.6,!=1.29.0)"]
-postgresql_psycopg2binary = ["psycopg2-binary"]
-postgresql_psycopg2cffi = ["psycopg2cffi"]
-pymysql = ["pymysql (<1)", "pymysql"]
-sqlcipher = ["sqlcipher3-binary"]
+postgresql-asyncpg = ["asyncpg", "greenlet (!=0.4.17)"]
+postgresql-pg8000 = ["pg8000 (>=1.16.6,!=1.29.0)"]
+postgresql-psycopg2binary = ["psycopg2-binary"]
+postgresql-psycopg2cffi = ["psycopg2cffi"]
+pymysql = ["pymysql", "pymysql (<1)"]
+sqlcipher = ["sqlcipher3_binary"]
 
 [[package]]
 name = "sqlalchemy2-stubs"
@@ -1374,7 +1354,7 @@ virtualenv = ">=16.0.0,<20.0.0 || >20.0.0,<20.0.1 || >20.0.1,<20.0.2 || >20.0.2,
 
 [package.extras]
 docs = ["pygments-github-lexers (>=0.0.5)", "sphinx (>=2.0.0)", "sphinxcontrib-autoprogram (>=0.1.5)", "towncrier (>=18.5.0)"]
-testing = ["flaky (>=3.4.0)", "freezegun (>=0.3.11)", "pytest (>=4.0.0)", "pytest-cov (>=2.5.1)", "pytest-mock (>=1.10.0)", "pytest-randomly (>=1.0.0)", "psutil (>=5.6.1)", "pathlib2 (>=2.3.3)"]
+testing = ["flaky (>=3.4.0)", "freezegun (>=0.3.11)", "pathlib2 (>=2.3.3)", "psutil (>=5.6.1)", "pytest (>=4.0.0)", "pytest-cov (>=2.5.1)", "pytest-mock (>=1.10.0)", "pytest-randomly (>=1.0.0)"]
 
 [[package]]
 name = "tox-docker"
@@ -1440,8 +1420,8 @@ optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, <4"
 
 [package.extras]
-brotli = ["brotlicffi (>=0.8.0)", "brotli (>=1.0.9)", "brotlipy (>=0.6.0)"]
-secure = ["pyOpenSSL (>=0.14)", "cryptography (>=1.3.4)", "idna (>=2.0.0)", "certifi", "ipaddress"]
+brotli = ["brotli (>=1.0.9)", "brotlicffi (>=0.8.0)", "brotlipy (>=0.6.0)"]
+secure = ["certifi", "cryptography (>=1.3.4)", "idna (>=2.0.0)", "ipaddress", "pyOpenSSL (>=0.14)"]
 socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 
 [[package]]
@@ -1468,7 +1448,7 @@ six = ">=1.9.0,<2"
 
 [package.extras]
 docs = ["proselint (>=0.10.2)", "sphinx (>=3)", "sphinx-argparse (>=0.2.5)", "sphinx-rtd-theme (>=0.4.3)", "towncrier (>=21.3)"]
-testing = ["coverage (>=4)", "coverage-enable-subprocess (>=1)", "flaky (>=3)", "pytest (>=4)", "pytest-env (>=0.6.2)", "pytest-freezegun (>=0.4.1)", "pytest-mock (>=2)", "pytest-randomly (>=1)", "pytest-timeout (>=1)", "packaging (>=20.0)"]
+testing = ["coverage (>=4)", "coverage-enable-subprocess (>=1)", "flaky (>=3)", "packaging (>=20.0)", "pytest (>=4)", "pytest-env (>=0.6.2)", "pytest-freezegun (>=0.4.1)", "pytest-mock (>=2)", "pytest-randomly (>=1)", "pytest-timeout (>=1)"]
 
 [[package]]
 name = "waitress"
@@ -1480,7 +1460,7 @@ python-versions = ">=3.7.0"
 
 [package.extras]
 docs = ["Sphinx (>=1.8.1)", "docutils", "pylons-sphinx-themes (>=1.0.9)"]
-testing = ["pytest", "pytest-cover", "coverage (>=5.0)"]
+testing = ["coverage (>=5.0)", "pytest", "pytest-cover"]
 
 [[package]]
 name = "websocket-client"
@@ -1515,13 +1495,13 @@ optional = false
 python-versions = ">=3.7"
 
 [package.extras]
-docs = ["sphinx", "jaraco.packaging (>=9)", "rst.linker (>=1.9)"]
-testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-cov", "pytest-enabler (>=1.0.1)", "jaraco.itertools", "func-timeout", "pytest-black (>=0.3.7)", "pytest-mypy (>=0.9.1)"]
+docs = ["jaraco.packaging (>=9)", "rst.linker (>=1.9)", "sphinx"]
+testing = ["func-timeout", "jaraco.itertools", "pytest (>=6)", "pytest-black (>=0.3.7)", "pytest-checkdocs (>=2.4)", "pytest-cov", "pytest-enabler (>=1.0.1)", "pytest-flake8", "pytest-mypy (>=0.9.1)"]
 
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9,<3.10"
-content-hash = "f7aa3c2242fd3bf2b3ed6dee64d478deb2e0f55073acefa7616f23161cdfa420"
+content-hash = "fe9687507e74b1334a636fe65890b460c77c8095d10bb7f45fbfd74a78c855e4"
 
 [metadata.files]
 alembic = [
@@ -1549,8 +1529,8 @@ attrs = [
     {file = "attrs-21.4.0.tar.gz", hash = "sha256:626ba8234211db98e869df76230a137c4c40a12d72445c45d5f5b716f076e2fd"},
 ]
 auth0-api-client = [
-    {file = "auth0-api-client-1.3.5.tar.gz", hash = "md5:d8b2b9be4d638fd1283d31a9e6d677d2"},
-    {file = "auth0_api_client-1.3.5-py3-none-any.whl", hash = "md5:680208b1d6cc3af6f75d830af871007e"},
+    {file = "auth0-api-client-1.3.6.tar.gz", hash = "sha256:0da440b20f3acdd61b2fd0b3ead23366e2615de98306bb99d0e5e41efe0f564a"},
+    {file = "auth0_api_client-1.3.6-py3-none-any.whl", hash = "sha256:0c884ff22369977093f571cb668d3c20677de1f109e06cbe45c0ab85426a6887"},
 ]
 bandit = [
     {file = "bandit-1.7.4-py3-none-any.whl", hash = "sha256:412d3f259dab4077d0e7f0c11f50f650cc7d10db905d98f6520a95a18049658a"},
@@ -1657,8 +1637,8 @@ decorator = [
     {file = "decorator-5.1.1.tar.gz", hash = "sha256:637996211036b6385ef91435e4fae22989472f9d571faba8927ba8253acbc330"},
 ]
 dhos-redis = [
-    {file = "dhos-redis-1.0.0.tar.gz", hash = "md5:ac1699006ed025e97161be59223736b2"},
-    {file = "dhos_redis-1.0.0-py3-none-any.whl", hash = "md5:5483b2e3ec42d608a03c937c9d2f50cb"},
+    {file = "dhos-redis-1.0.2.tar.gz", hash = "sha256:aaf202391fdfb03e1bdabb5946377c2f4d346103bd3eda7b34ad90a8f9b1e4c0"},
+    {file = "dhos_redis-1.0.2-py3-none-any.whl", hash = "sha256:ba73911053ec421b92f4afceb5c98d7e369fd49226a5e7505f8708a1f251f77c"},
 ]
 distlib = [
     {file = "distlib-0.3.4-py2.py3-none-any.whl", hash = "sha256:6564fe0a8f51e734df6333d08b8b94d4ea8ee6b99b5ed50613f731fd4089f34b"},
@@ -1669,12 +1649,12 @@ docker = [
     {file = "docker-5.0.3.tar.gz", hash = "sha256:d916a26b62970e7c2f554110ed6af04c7ccff8e9f81ad17d0d40c75637e227fb"},
 ]
 dparse = [
-    {file = "dparse-0.5.1-py3-none-any.whl", hash = "sha256:e953a25e44ebb60a5c6efc2add4420c177f1d8404509da88da9729202f306994"},
-    {file = "dparse-0.5.1.tar.gz", hash = "sha256:a1b5f169102e1c894f9a7d5ccf6f9402a836a5d24be80a986c7ce9eaed78f367"},
+    {file = "dparse-0.6.2-py3-none-any.whl", hash = "sha256:8097076f1dd26c377f30d4745e6ec18fef42f3bf493933b842ac5bafad8c345f"},
+    {file = "dparse-0.6.2.tar.gz", hash = "sha256:d45255bda21f998bc7ddf2afd5e62505ba6134756ba2d42a84c56b0826614dfe"},
 ]
 draymed = [
-    {file = "draymed-2.1.5-py3-none-any.whl", hash = "md5:cf08c694416dd96f597fb5e136571789"},
-    {file = "draymed-2.1.5.tar.gz", hash = "md5:c153fd41894c10bfb9ea04cac917fd16"},
+    {file = "draymed-2.1.9-py3-none-any.whl", hash = "sha256:6b1daf1ea618edce3f35ac372cd655c05671ef43426fdee70568d255f2b92b73"},
+    {file = "draymed-2.1.9.tar.gz", hash = "sha256:7aef7552b2b0ac99a5872b270a4f57dd7da66a50768fc4366e588c8380c3c8ed"},
 ]
 ecdsa = [
     {file = "ecdsa-0.17.0-py2.py3-none-any.whl", hash = "sha256:5cf31d5b33743abe0dfc28999036c849a69d548f994b535e527ee3cb7f3ef676"},
@@ -1697,8 +1677,8 @@ flask = [
     {file = "Flask-2.1.2.tar.gz", hash = "sha256:315ded2ddf8a6281567edb27393010fe3406188bafbfe65a3339d5787d89e477"},
 ]
 flask-batteries-included = [
-    {file = "flask-batteries-included-3.1.1.tar.gz", hash = "md5:cca08e8fc3bd6b6016161cf20c41fa00"},
-    {file = "flask_batteries_included-3.1.1-py3-none-any.whl", hash = "md5:bd6af0187d30d98d7a299299cb995add"},
+    {file = "flask-batteries-included-3.1.2.tar.gz", hash = "sha256:3a990c80592a3ccce905d0727837caaf1136f5602c5d2f2362b03d8b707e6bc3"},
+    {file = "flask_batteries_included-3.1.2-py3-none-any.whl", hash = "sha256:7d55fe1699c661ae438d3092b783bbaa9bc3b90df1bd755aca685621b50fbee5"},
 ]
 flask-log-request-id = [
     {file = "Flask-Log-Request-ID-0.10.1.tar.gz", hash = "sha256:d537a1af3776308e69435ea609230f4fb7ef162fbc4bf268d7089f0b0e1851f4"},
@@ -1833,15 +1813,15 @@ kombu = [
     {file = "kombu-5.2.4.tar.gz", hash = "sha256:37cee3ee725f94ea8bb173eaab7c1760203ea53bbebae226328600f9d2799610"},
 ]
 kombu-batteries-included = [
-    {file = "kombu-batteries-included-1.1.3.tar.gz", hash = "md5:f92e52ff4ca4b12692a76153606b403d"},
-    {file = "kombu_batteries_included-1.1.3-py3-none-any.whl", hash = "md5:90e619baf21a891a6e8e95a3e8038983"},
+    {file = "kombu-batteries-included-1.1.4.tar.gz", hash = "sha256:39b89af18230b51f62cebeed7eba4d229307add2fd2487db480febc4cdcaebcf"},
+    {file = "kombu_batteries_included-1.1.4-py3-none-any.whl", hash = "sha256:d5226d74e124cd193484a39127d77ff620eb6b6a26726df4c558cc98487b5855"},
 ]
 lazy-import = [
     {file = "lazy_import-0.2.2.tar.gz", hash = "sha256:2149aef8579459407c62cfeccf118527939c9931ace124f355236360644f8a3d"},
 ]
 mako = [
-    {file = "Mako-1.2.0-py3-none-any.whl", hash = "sha256:23aab11fdbbb0f1051b93793a58323ff937e98e34aece1c4219675122e57e4ba"},
-    {file = "Mako-1.2.0.tar.gz", hash = "sha256:9a7c7e922b87db3686210cf49d5d767033a41d4010b284e747682c92bddd8b39"},
+    {file = "Mako-1.2.4-py3-none-any.whl", hash = "sha256:c97c79c018b9165ac9922ae4f32da095ffd3c4e6872b45eded42926deea46818"},
+    {file = "Mako-1.2.4.tar.gz", hash = "sha256:d60a3903dc3bb01a18ad6a89cdbe2e4eadc69c0bc8ef1e3773ba53d44c3f7a34"},
 ]
 markupsafe = [
     {file = "MarkupSafe-2.1.1-cp310-cp310-macosx_10_9_universal2.whl", hash = "sha256:86b1f75c4e7c2ac2ccdaec2b9022845dbb81880ca318bb7a0a01fbf7813e3812"},
@@ -1965,6 +1945,7 @@ prometheus-client = [
 psycopg2-binary = [
     {file = "psycopg2-binary-2.9.3.tar.gz", hash = "sha256:761df5313dc15da1502b21453642d7599d26be88bff659382f8f9747c7ebea4e"},
     {file = "psycopg2_binary-2.9.3-cp310-cp310-macosx_10_14_x86_64.macosx_10_9_intel.macosx_10_9_x86_64.macosx_10_10_intel.macosx_10_10_x86_64.whl", hash = "sha256:539b28661b71da7c0e428692438efbcd048ca21ea81af618d845e06ebfd29478"},
+    {file = "psycopg2_binary-2.9.3-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:2f2534ab7dc7e776a263b463a16e189eb30e85ec9bbe1bff9e78dae802608932"},
     {file = "psycopg2_binary-2.9.3-cp310-cp310-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:6e82d38390a03da28c7985b394ec3f56873174e2c88130e6966cb1c946508e65"},
     {file = "psycopg2_binary-2.9.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:57804fc02ca3ce0dbfbef35c4b3a4a774da66d66ea20f4bda601294ad2ea6092"},
     {file = "psycopg2_binary-2.9.3-cp310-cp310-manylinux_2_24_aarch64.whl", hash = "sha256:083a55275f09a62b8ca4902dd11f4b33075b743cf0d360419e2051a8a5d5ff76"},
@@ -1998,6 +1979,7 @@ psycopg2-binary = [
     {file = "psycopg2_binary-2.9.3-cp37-cp37m-win32.whl", hash = "sha256:adf20d9a67e0b6393eac162eb81fb10bc9130a80540f4df7e7355c2dd4af9fba"},
     {file = "psycopg2_binary-2.9.3-cp37-cp37m-win_amd64.whl", hash = "sha256:2f9ffd643bc7349eeb664eba8864d9e01f057880f510e4681ba40a6532f93c71"},
     {file = "psycopg2_binary-2.9.3-cp38-cp38-macosx_10_14_x86_64.macosx_10_9_intel.macosx_10_9_x86_64.macosx_10_10_intel.macosx_10_10_x86_64.whl", hash = "sha256:def68d7c21984b0f8218e8a15d514f714d96904265164f75f8d3a70f9c295667"},
+    {file = "psycopg2_binary-2.9.3-cp38-cp38-macosx_11_0_arm64.whl", hash = "sha256:e6aa71ae45f952a2205377773e76f4e3f27951df38e69a4c95440c779e013560"},
     {file = "psycopg2_binary-2.9.3-cp38-cp38-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:dffc08ca91c9ac09008870c9eb77b00a46b3378719584059c034b8945e26b272"},
     {file = "psycopg2_binary-2.9.3-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:280b0bb5cbfe8039205c7981cceb006156a675362a00fe29b16fbc264e242834"},
     {file = "psycopg2_binary-2.9.3-cp38-cp38-manylinux_2_24_aarch64.whl", hash = "sha256:af9813db73395fb1fc211bac696faea4ca9ef53f32dc0cfa27e4e7cf766dcf24"},
@@ -2009,6 +1991,7 @@ psycopg2-binary = [
     {file = "psycopg2_binary-2.9.3-cp38-cp38-win32.whl", hash = "sha256:6472a178e291b59e7f16ab49ec8b4f3bdada0a879c68d3817ff0963e722a82ce"},
     {file = "psycopg2_binary-2.9.3-cp38-cp38-win_amd64.whl", hash = "sha256:35168209c9d51b145e459e05c31a9eaeffa9a6b0fd61689b48e07464ffd1a83e"},
     {file = "psycopg2_binary-2.9.3-cp39-cp39-macosx_10_14_x86_64.macosx_10_9_intel.macosx_10_9_x86_64.macosx_10_10_intel.macosx_10_10_x86_64.whl", hash = "sha256:47133f3f872faf28c1e87d4357220e809dfd3fa7c64295a4a148bcd1e6e34ec9"},
+    {file = "psycopg2_binary-2.9.3-cp39-cp39-macosx_11_0_arm64.whl", hash = "sha256:b3a24a1982ae56461cc24f6680604fffa2c1b818e9dc55680da038792e004d18"},
     {file = "psycopg2_binary-2.9.3-cp39-cp39-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:91920527dea30175cc02a1099f331aa8c1ba39bf8b7762b7b56cbf54bc5cce42"},
     {file = "psycopg2_binary-2.9.3-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:887dd9aac71765ac0d0bac1d0d4b4f2c99d5f5c1382d8b770404f0f3d0ce8a39"},
     {file = "psycopg2_binary-2.9.3-cp39-cp39-manylinux_2_24_aarch64.whl", hash = "sha256:1f14c8b0942714eb3c74e1e71700cbbcb415acbc311c730370e70c578a44a25c"},
@@ -2025,18 +2008,7 @@ py = [
     {file = "py-1.11.0.tar.gz", hash = "sha256:51c75c4126074b472f746a24399ad32f6053d1b34b68d2fa41e558e6f4a98719"},
 ]
 pyasn1 = [
-    {file = "pyasn1-0.4.8-py2.4.egg", hash = "sha256:fec3e9d8e36808a28efb59b489e4528c10ad0f480e57dcc32b4de5c9d8c9fdf3"},
-    {file = "pyasn1-0.4.8-py2.5.egg", hash = "sha256:0458773cfe65b153891ac249bcf1b5f8f320b7c2ce462151f8fa74de8934becf"},
-    {file = "pyasn1-0.4.8-py2.6.egg", hash = "sha256:5c9414dcfede6e441f7e8f81b43b34e834731003427e5b09e4e00e3172a10f00"},
-    {file = "pyasn1-0.4.8-py2.7.egg", hash = "sha256:6e7545f1a61025a4e58bb336952c5061697da694db1cae97b116e9c46abcf7c8"},
     {file = "pyasn1-0.4.8-py2.py3-none-any.whl", hash = "sha256:39c7e2ec30515947ff4e87fb6f456dfc6e84857d34be479c9d4a4ba4bf46aa5d"},
-    {file = "pyasn1-0.4.8-py3.1.egg", hash = "sha256:78fa6da68ed2727915c4767bb386ab32cdba863caa7dbe473eaae45f9959da86"},
-    {file = "pyasn1-0.4.8-py3.2.egg", hash = "sha256:08c3c53b75eaa48d71cf8c710312316392ed40899cb34710d092e96745a358b7"},
-    {file = "pyasn1-0.4.8-py3.3.egg", hash = "sha256:03840c999ba71680a131cfaee6fab142e1ed9bbd9c693e285cc6aca0d555e576"},
-    {file = "pyasn1-0.4.8-py3.4.egg", hash = "sha256:7ab8a544af125fb704feadb008c99a88805126fb525280b2270bb25cc1d78a12"},
-    {file = "pyasn1-0.4.8-py3.5.egg", hash = "sha256:e89bf84b5437b532b0803ba5c9a5e054d21fec423a89952a74f87fa2c9b7bce2"},
-    {file = "pyasn1-0.4.8-py3.6.egg", hash = "sha256:014c0e9976956a08139dc0712ae195324a75e142284d5f87f1a87ee1b068a359"},
-    {file = "pyasn1-0.4.8-py3.7.egg", hash = "sha256:99fcc3c8d804d1bc6d9a099921e39d827026409a58f2a720dcdb89374ea0c776"},
     {file = "pyasn1-0.4.8.tar.gz", hash = "sha256:aef77c9fb94a3ac588e87841208bdec464471d9871bd5050a287cc9a475cd0ba"},
 ]
 pycryptodomex = [
@@ -2145,8 +2117,8 @@ pytest-alembic = [
     {file = "pytest_alembic-0.8.2-py3-none-any.whl", hash = "sha256:957be767984ae8733eb27a3ac94d5a5d0886796cc677aff85861f8678608bf47"},
 ]
 pytest-dhos = [
-    {file = "pytest-dhos-1.0.3.tar.gz", hash = "md5:f32445aca47c0ed6d410aa5035a8840f"},
-    {file = "pytest_dhos-1.0.3-py3-none-any.whl", hash = "md5:7dd42a831ab849562d800f692611596f"},
+    {file = "pytest-dhos-1.0.5.tar.gz", hash = "sha256:34951a19bf2d67004091d06926eb7b878680f8fa7097f2b8e023dbd6a31bf6b2"},
+    {file = "pytest_dhos-1.0.5-py3-none-any.whl", hash = "sha256:47fb8a4dd920b32c38a7fab13829feda716afd25882b093dea8473f203ad5e56"},
 ]
 pytest-flask = [
     {file = "pytest-flask-1.2.0.tar.gz", hash = "sha256:46fde652f77777bf02dc91205aec4ce20cdf2acbbbd66a918ab91f5c14693d3d"},
@@ -2245,9 +2217,13 @@ safety = [
     {file = "safety-1.10.3-py2.py3-none-any.whl", hash = "sha256:5f802ad5df5614f9622d8d71fedec2757099705c2356f862847c58c6dfe13e84"},
     {file = "safety-1.10.3.tar.gz", hash = "sha256:30e394d02a20ac49b7f65292d19d38fa927a8f9582cdfd3ad1adbbc66c641ad5"},
 ]
+setuptools = [
+    {file = "setuptools-65.6.3-py3-none-any.whl", hash = "sha256:57f6f22bde4e042978bcd50176fdb381d7c21a9efa4041202288d3737a0c6a54"},
+    {file = "setuptools-65.6.3.tar.gz", hash = "sha256:a7620757bf984b58deaf32fc8a4577a9bbc0850cf92c20e1ce41c38c19e5fb75"},
+]
 she-logging = [
-    {file = "she-logging-1.4.0.tar.gz", hash = "md5:89cabd2bb4b7319ccc94f32799c1f90d"},
-    {file = "she_logging-1.4.0-py3-none-any.whl", hash = "md5:823f13c64489cdfea9734cdc1dc0fc3d"},
+    {file = "she-logging-1.4.1.tar.gz", hash = "sha256:778d9d61885d26302344e98299b998c40dff2d924bfa11d7bedd16eb11f72db3"},
+    {file = "she_logging-1.4.1-py3-none-any.whl", hash = "sha256:2bdc36a31ff05893e08398ed6183389377cc7c7955abddbd4eb903e4f4050a7d"},
 ]
 six = [
     {file = "six-1.16.0-py2.py3-none-any.whl", hash = "sha256:8abb2f1d86890a2dfb989f9a77cfcfd3e47c2a354b01111771326f8aa26e0254"},
@@ -2261,6 +2237,7 @@ sqlalchemy = [
     {file = "SQLAlchemy-1.4.37-cp27-cp27m-macosx_10_14_x86_64.whl", hash = "sha256:d9050b0c4a7f5538650c74aaba5c80cd64450e41c206f43ea6d194ae6d060ff9"},
     {file = "SQLAlchemy-1.4.37-cp27-cp27m-manylinux_2_5_x86_64.manylinux1_x86_64.whl", hash = "sha256:b4c92823889cf9846b972ee6db30c0e3a92c0ddfc76c6060a6cda467aa5fb694"},
     {file = "SQLAlchemy-1.4.37-cp27-cp27m-win32.whl", hash = "sha256:b55932fd0e81b43f4aff397c8ad0b3c038f540af37930423ab8f47a20b117e4c"},
+    {file = "SQLAlchemy-1.4.37-cp27-cp27m-win_amd64.whl", hash = "sha256:4a17c1a1152ca4c29d992714aa9df3054da3af1598e02134f2e7314a32ef69d8"},
     {file = "SQLAlchemy-1.4.37-cp27-cp27mu-manylinux_2_5_x86_64.manylinux1_x86_64.whl", hash = "sha256:ffe487570f47536b96eff5ef2b84034a8ba4e19aab5ab7647e677d94a119ea55"},
     {file = "SQLAlchemy-1.4.37-cp310-cp310-macosx_10_15_x86_64.whl", hash = "sha256:78363f400fbda80f866e8e91d37d36fe6313ff847ded08674e272873c1377ea5"},
     {file = "SQLAlchemy-1.4.37-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:7ee34c85cbda7779d66abac392c306ec78c13f5c73a1f01b8b767916d4895d23"},
