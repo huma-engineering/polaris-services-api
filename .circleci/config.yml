@@ -1,15 +1,14 @@
 SERVICE_FOLDERS_MASTER: &SERVICE_FOLDERS
   SERVICE_FOLDERS: '.'
 
-GCP_DOCKER_AUTH_MASTER: &GCP_DOCKER_AUTH
+ACR_DOCKER_AUTH_MASTER: &ACR_DOCKER_AUTH
   auth:
-    username: _json_key
-    password: ${GOOGLE_AUTH}
+    username: humagdmacr
+    password: ${ACR_PASSWORD}
 
 version: 2.1
 orbs:
   azure-acr: circleci/azure-acr@0.1.4
-  ms-teams: cloudradar-monitoring/ms-teams@0.0.1
 jobs:
   test:
     docker:
@@ -45,8 +44,8 @@ jobs:
 
   integration-test:
     docker:
-      - image: gcr.io/dhos-stack/circleci-build-image:latest
-        <<: *GCP_DOCKER_AUTH
+      - image: &circleci_build_image humagdmacr.azurecr.io/she/circleci-build-image
+        <<: *ACR_DOCKER_AUTH
     environment:
       <<: *SERVICE_FOLDERS
       REPORT_PORTAL_PROJECT: platform
@@ -57,14 +56,14 @@ jobs:
           docker_layer_caching: true
       - run:
           name: Auth with ACR
-          command: source /usr/local/bin/deployment-helpers-v1.sh; authenticateToACR
+          command: az acr login -n $ACR_REGISTRY_NAME -u $AZURE_USERNAME -p $AZURE_PASSWORD
       - run:
           name: Run the integration test script
           command: .circleci/run_integration_tests.sh
   deploy-dev:
     docker:
-      - image: gcr.io/dhos-stack/circleci-build-image:latest
-        <<: *GCP_DOCKER_AUTH
+      - image: *circleci_build_image
+        <<: *ACR_DOCKER_AUTH
     environment:
       K8S_DEV_DEPLOYMENT_NAME: deployment/dhos-services-api-dep
       ACR_REPO_BASE: dhos
@@ -97,9 +96,6 @@ jobs:
       - run:
           name: Deploy to Azure dev environment
           command: .circleci/deploy_azure_dev.sh
-      - ms-teams/report:
-          only_on_fail: true
-          webhook_url: ${MSTEAMS_NOTIFY_WEBHOOK_URL}
 workflows:
   version: 2
   build_test_deploy:
