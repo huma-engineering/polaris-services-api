@@ -18,6 +18,14 @@ if [ $CIRCLE_BRANCH == $DEFAULT_BRANCH ]; then
   export RELEASE=$(git describe --tags | sed s/v//g)
 fi
 
+if [ $CIRCLECI == true ]; then
+  echo "Using CircleCi ssh agent"
+  export DOCKER_SSH=/home/circleci/.ssh/id_rsa
+else
+  echo "Using local ssh agent"
+  export DOCKER_SSH=~/.ssh/id_ed25519
+fi
+
 # Start the containers, backgrounded so we can do docker wait
 # Pre pulling the postgres image so wait-for-it doesn't time out
 docker-compose rm -f

@@ -9,6 +9,7 @@ ACR_DOCKER_AUTH_MASTER: &ACR_DOCKER_AUTH
 version: 2.1
 orbs:
   azure-acr: circleci/azure-acr@0.1.4
+  docker: circleci/docker@2.2.0
 jobs:
   test:
     docker:
@@ -52,11 +53,12 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker:
-          version: 20.10.7
+          version: 20.10.18
           docker_layer_caching: true
       - run:
           name: Auth with ACR
           command: az acr login -n $ACR_REGISTRY_NAME -u $AZURE_USERNAME -p $AZURE_PASSWORD
+      - docker/install-docker-compose
       - run:
           name: Run the integration test script
           command: .circleci/run_integration_tests.sh

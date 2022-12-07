@@ -105,6 +105,8 @@ services:
       dockerfile: Dockerfile
       args:
         - PIP_EXTRA_INDEX_URL
+      ssh:
+        - ed=$DOCKER_SSH
     environment:
       <<: *COMMON_ENVIRONMENT
       SYSTEM_JWT_SCOPE: >-
