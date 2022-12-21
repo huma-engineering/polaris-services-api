@@ -6,18 +6,15 @@ ADD --chown=circleci:circleci ./pyproject.toml ./tox.ini ./poetry.lock ./project
 
 WORKDIR /home/circleci/project
 
-ARG GEMFURY_DOWNLOAD_KEY
 ARG CIRCLECI
 
 # Need to turn build args to env vars so that entrypoint script can see them.
-ENV GEMFURY_DOWNLOAD_KEY=${GEMFURY_DOWNLOAD_KEY}
 ENV CIRCLECI=${CIRCLECI}
 
 ENV NEO4J_DB_URL=neo4j
 ENV DATABASE_HOST=postgres_db
 
 RUN sudo `which pip` install --upgrade pip tox poetry && \
-poetry config http-basic.sensynehealth ${GEMFURY_DOWNLOAD_KEY:?Missing build argument} ''
 RUN tox -e install-deps
 
 ADD --chown=circleci:circleci . .
