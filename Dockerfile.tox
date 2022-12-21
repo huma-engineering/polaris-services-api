@@ -14,7 +14,7 @@ ENV CIRCLECI=${CIRCLECI}
 ENV NEO4J_DB_URL=neo4j
 ENV DATABASE_HOST=postgres_db
 
-RUN sudo `which pip` install --upgrade pip tox poetry && \
+RUN sudo `which pip` install --upgrade pip tox poetry
 RUN tox -e install-deps
 
 ADD --chown=circleci:circleci . .
