@@ -3,6 +3,8 @@ security:
     ignore-cvss-severity-below: 0 # A severity number between 0 and 10.
     ignore-cvss-unknown-severity: False # True or False.
     ignore-vulnerabilities: # Here you can list multiple specific vulnerabilities you want to ignore
+        41773:
+            reason: Ignore neomodel security as neo4j driver incompatible with neo4j 3.4
         51457: # vulnerability ID
             reason: There is no fix for the vulnerability yet
             expires: '2023-01-21'
