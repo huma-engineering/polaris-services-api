@@ -1,0 +1,86 @@
+name: CI
+
+on: [workflow_dispatch, push, pull_request]
+
+env:
+  REGISTRY: humagdmacr.azurecr.io
+  ACR_USERNAME: humagdmacr
+
+jobs:
+  test:
+    name: Unit testing
+    runs-on: ubuntu-latest
+    env:
+      SERVICE_FOLDERS: '.'
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install poetry
+        run: pipx install poetry
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+      - name: Update pip, poetry and tox
+        run: |
+          poetry self update --no-ansi
+          pip install --upgrade pip tox
+      - name: Create coverage report dir
+        run: mkdir -p coverage-reports
+      - name: Cache python dependencies
+        uses: actions/cache@v3
+        with:
+          path: '**/.tox'
+          key: v1-poetry-deps-${{ hashFiles('**/poetry.lock', '**/tox.ini') }}
+          restore-keys: v1-poetry-deps-
+      - name: Set up neo4j and run tests
+        run: ./run_neo_tests.sh
+      - name: Archive code coverage results
+        uses: actions/upload-artifact@v3
+        with:
+          name: code-coverage-report
+          path: coverage-reports/coverage.xml
+
+  integration_tests:
+    name: Integration testing
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Log in to the Azure Container Registry
+        uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ env.ACR_USERNAME }}
+          password: ${{ secrets.ACR_PASSWORD }}
+      - name: Run the integration test script
+        run: ./run_integration_tests.sh
+
+  build_and_push:
+    name: Build and push
+    needs: [test, integration_tests]
+    if: ${{ github.ref == 'refs/heads/develop' }}
+    runs-on: ubuntu-latest
+    env:
+      ACR_REPO_BASE: dhos
+    steps:
+      - uses: actions/checkout@v3
+      - name: Log in to the Azure Container Registry
+        uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ env.ACR_USERNAME }}
+          password: ${{ secrets.ACR_PASSWORD }}
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.ACR_REPO_BASE }}/gdm-bg-readings-api
+          tags: |
+            type=raw,value=dev
+            type=sha
+      - name: Build and push Docker image
+        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
