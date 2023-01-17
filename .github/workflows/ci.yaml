@@ -5,13 +5,12 @@ on: [workflow_dispatch, push, pull_request]
 env:
   REGISTRY: humagdmacr.azurecr.io
   ACR_USERNAME: humagdmacr
+  SERVICE_FOLDERS: '.'
 
 jobs:
   test:
     name: Unit testing
     runs-on: ubuntu-latest
-    env:
-      SERVICE_FOLDERS: '.'
     steps:
       - uses: actions/checkout@v3
       - name: Install poetry
@@ -77,7 +76,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
         with:
-          images: ${{ env.REGISTRY }}/${{ env.ACR_REPO_BASE }}/gdm-bg-readings-api
+          images: ${{ env.REGISTRY }}/${{ env.ACR_REPO_BASE }}/dhos-services-api
           tags: |
             type=raw,value=dev
             type=sha
