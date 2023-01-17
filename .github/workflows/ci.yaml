@@ -43,6 +43,8 @@ jobs:
   integration_tests:
     name: Integration testing
     runs-on: ubuntu-latest
+    env:
+      SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_KEY_PRIVATE }}
     steps:
       - uses: actions/checkout@v3
       - name: Log in to the Azure Container Registry
@@ -52,7 +54,9 @@ jobs:
           username: ${{ env.ACR_USERNAME }}
           password: ${{ secrets.ACR_PASSWORD }}
       - name: Run the integration test script
-        run: ./run_integration_tests.sh
+        run: |
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          ./run_integration_tests.sh
 
   build_and_push:
     name: Build and push

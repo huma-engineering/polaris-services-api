@@ -10,17 +10,9 @@ done
 
 cd integration-tests
 
-# Enable ReportPortal integration if on the default branch
-if [ $CIRCLE_BRANCH == $DEFAULT_BRANCH ]; then
-  echo "Enabling reportportal integration"
-  export BEHAVE_ARGS="-D rp_enable=True -D step_based=True"
-  export ENVIRONMENT=dev
-  export RELEASE=$(git describe --tags | sed s/v//g)
-fi
-
-if [ $CIRCLECI == true ]; then
-  echo "Using CircleCi ssh agent"
-  export DOCKER_SSH=/home/circleci/.ssh/id_rsa
+if [ "$GITHUB_ACTIONS" == true ]; then
+  echo "Using GitHub Actions ssh agent"
+  export DOCKER_SSH=~/.ssh/id_rsa
 else
   echo "Using local ssh agent"
   export DOCKER_SSH=~/.ssh/id_ed25519
