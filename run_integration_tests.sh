@@ -20,9 +20,9 @@ fi
 
 # Start the containers, backgrounded so we can do docker wait
 # Pre pulling the postgres image so wait-for-it doesn't time out
-docker-compose rm -f
-docker-compose pull
-docker-compose up --build --force-recreate -d
+docker compose rm -f
+docker compose pull
+docker compose up --build --force-recreate -d
 
 # Wait for the integration-tests container to finish, and assign to RESULT
 RESULT=$(docker wait dhos-services-integration-tests)
