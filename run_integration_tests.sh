@@ -30,13 +30,13 @@ RESULT=$(docker wait dhos-services-integration-tests)
 # Print logs based on the test results
 if [ "$RESULT" -ne 0 ];
 then
-  docker-compose logs
+  docker compose logs
 else
-  docker-compose logs dhos-services-integration-tests
+  docker compose logs dhos-services-integration-tests
 fi
 
 # Stop the containers
-docker-compose down
+docker compose down
 
 # Exit based on the test results
 if [ "$RESULT" -ne 0 ]; then
