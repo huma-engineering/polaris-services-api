@@ -10,5 +10,5 @@ security:
             expires: '2023-01-21'
         51668:
             reason: There is no stable version for sqlalchemy yet
-            expires: '2023-01-12'
+            expires: '2023-02-12'
     continue-on-vulnerability-error: False # Suppress non-zero exit codes when vulnerabilities are found. Enable this in pipelines and CI/CD processes if you want to pass builds that have vulnerabilities.
