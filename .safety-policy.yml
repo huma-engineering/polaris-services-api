@@ -7,7 +7,7 @@ security:
             reason: Ignore neomodel security as neo4j driver incompatible with neo4j 3.4
         51457: # vulnerability ID
             reason: There is no fix for the vulnerability yet
-            expires: '2023-01-21'
+            expires: '2023-02-21'
         51668:
             reason: There is no stable version for sqlalchemy yet
             expires: '2023-02-12'
