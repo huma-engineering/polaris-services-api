@@ -1,0 +1,89 @@
+name: CI
+
+on: [workflow_dispatch, push, pull_request]
+
+env:
+  REGISTRY: ghcr.io
+  SERVICE_FOLDERS: '.'
+
+jobs:
+  test:
+    name: Unit testing
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install poetry
+        run: pipx install poetry
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+      - name: Update pip, poetry and tox
+        run: |
+          poetry self update --no-ansi
+          pip install --upgrade pip tox
+      - name: Create coverage report dir
+        run: mkdir -p coverage-reports
+      - name: Cache python dependencies
+        uses: actions/cache@v3
+        with:
+          path: '**/.tox'
+          key: v1-poetry-deps-${{ hashFiles('**/poetry.lock', '**/tox.ini') }}
+          restore-keys: v1-poetry-deps-
+      - name: Set up neo4j and run tests
+        run: ./run_neo_tests.sh
+      - name: Archive code coverage results
+        uses: actions/upload-artifact@v3
+        with:
+          name: code-coverage-report
+          path: coverage-reports/coverage.xml
+
+  integration_tests:
+    name: Integration testing
+    runs-on: ubuntu-latest
+    env:
+      SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_KEY_PRIVATE }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Log in to the GitHub Packages
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Run the integration test script
+        run: |
+          mkdir ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          ./run_integration_tests.sh
+
+  build_and_push:
+    name: Build and push
+    needs: [test, integration_tests]
+    if: ${{ github.ref == 'refs/heads/develop' }}
+    runs-on: ubuntu-latest
+    env:
+      GHCR_REPO_BASE: huma-engineering/dhos
+    steps:
+      - uses: actions/checkout@v3
+      - name: Log in to the GitHub Packages
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.GHCR_REPO_BASE }}/dhos-services-api
+          tags: |
+            type=raw,value=dev
+            type=sha
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}

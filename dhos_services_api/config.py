@@ -23,7 +23,8 @@ class Configuration:
     GDM_SMS_SENDER: str = env.str("GDM_SMS_SENDER", "GDm-Health")
     GDM_LINK_MSG: str = env.str(
         "GDM_LINK_MSG",
-        "You can download the free GDm-Health app now, click https://www.sensynehealth.com/gdm",
+        "You can download the free GDm-Health app now, click "
+        "https://intercom.help/medopad-ltd/en/collections/3678855-gdm-health-for-patients",
     )
 
     # If env var NEO4J_DB_URL is set, then we are using neo4j.

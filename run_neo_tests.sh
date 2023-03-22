@@ -14,7 +14,7 @@ docker-compose logs -f tox-tests
 # Wait for the tox-tests container to finish, and assign to RESULT
 RESULT=$(docker wait tox-tests)
 
-docker cp tox-tests:/home/circleci/project/coverage-reports/coverage.xml ../coverage-reports/coverage.xml
+docker cp tox-tests:/home/runner/work/polaris-bg-readings-api/polaris-bg-readings-api/coverage-reports/coverage.xml ../coverage-reports/coverage.xml
 
 # Stop the containers
 docker-compose down

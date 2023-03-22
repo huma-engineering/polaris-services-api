@@ -136,7 +136,7 @@ services:
 
   dhos-locations-api:
     container_name: "dhos-locations-api"
-    image: humagdmacr.azurecr.io/dhos/dhos-locations-api:dev
+    image: ghcr.io/huma-engineering/dhos/dhos-locations-api:dev
     environment:
       <<: *COMMON_ENVIRONMENT
       DATABASE_HOST: postgres-db
@@ -155,7 +155,7 @@ services:
 
   dhos-users-api:
     container_name: "dhos-users-api"
-    image: humagdmacr.azurecr.io/dhos/dhos-users-api:dev
+    image: ghcr.io/huma-engineering/dhos/dhos-users-api:dev
     environment:
       <<: *COMMON_ENVIRONMENT
       DATABASE_HOST: postgres-db
